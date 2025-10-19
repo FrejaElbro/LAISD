@@ -20,6 +20,7 @@ This repository contains implementations of Information Set Decoding (ISD) algor
 - Matplotlib
 
 ## Asymptotic analysis
+In the paper, variables like `k`, `w`, `ell` represent values that scale with `n`. In the asymptotic implementation, we optimize over the ratios `(variable/n)` but maintain the original variable names for simplicity.
 
 ### Quick Start
 
@@ -109,7 +110,9 @@ plot_worst_case_differences(q_min=0, q_max=1000)
 plot_worst_case_memory(q_min=0, q_max=1000)
 ```
 
-**Note:** In the paper, variables like `k`, `w`, `ell` represent values that scale with `n`. In the asymptotic implementation, we optimize over the ratios `(variable/n)` but maintain the original variable names for simplicity.
+**On the use of AI:** The code in rate_sweep.py was recreated with help from GitHub Copilot. This was done to create a clearer, more understandable version of the logic, as our original human-written implementation contained numerous optimizations and special cases that made it difficult to follow. The generated code was manually reviewed for correctness, and its results were verified to be identical to those from the original implementation.
+
+
 
 
 
