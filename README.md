@@ -4,9 +4,10 @@ Accompanying code for the article **"Decoupling Support Enumeration and Value Di
 
 ## Overview
 
-This repository contains implementations of Information Set Decoding (ISD) algorithms for analyzing asymptotic runtime complexity. The code includes:
+This repository contains implementations of Information Set Decoding (ISD) algorithms for analyzing runtime complexity in the finite and assymptotic regime. The code includes:
 
-- **MitM-LA** (Meet-in-the-Middle Linear Algebra) algorithm 
+- **LA-ISD** (Linear Algebra Information Set Decoding)
+- **MitM-LA** (Meet-in-the-Middle Linear Algebra) 
 - Comparison algorithms from the literature
 - Tools for parameter optimization and complexity analysis
 
@@ -18,8 +19,9 @@ This repository contains implementations of Information Set Decoding (ISD) algor
 - SciPy
 - Matplotlib
 
+## Asymptotic analysis
 
-## Quick Start
+### Quick Start
 
 1. **Run the example script:**
    ```python
@@ -28,7 +30,6 @@ This repository contains implementations of Information Set Decoding (ISD) algor
 
 2. **Or use the interactive examples below:**
 
-## Usage Examples
 
 ### Single Algorithm Optimization
 
@@ -37,7 +38,7 @@ from BJMM2 import ISD as BJMM2_ISD
 from MitM_LA import ISD as MitM_LA_ISD
 from MitM_LA_memC import ISD as MitM_LA_memC_ISD
 from Dumer import ISD as Dumer_ISD
-from background import Hqi
+from background import Hqi # Inverse of q-ary entropy function
 
 # Define parameters
 q = 9          # Field size
@@ -59,7 +60,7 @@ print(f"Memory complexity: {Dumer_memory(x)}")
 The repository includes precomputed optimization sweeps for various field sizes:
 
 ```python
-from rate_sweep_background import load_results_for_q, plot_complexity_vs_rate
+from rate_sweep import load_results_for_q, plot_complexity_vs_rate
 
 # Load precomputed results for q=9
 q = 9
@@ -86,7 +87,7 @@ Optimization sweeps are available for:
 ### Running Custom Optimization Sweeps
 
 ```python
-from rate_sweep_background import run_optimization_sweep
+from rate_sweep import run_optimization_sweep
 
 # Define custom parameters
 k_values = [0.45, 0.46, 0.47, 0.48, 0.49, 0.50]
@@ -99,7 +100,7 @@ run_optimization_sweep(q, k_values=k_values)
 ### Recreating Paper Figures
 
 ```python
-from rate_sweep_background import plot_worst_case_differences, plot_worst_case_memory
+from rate_sweep import plot_worst_case_differences, plot_worst_case_memory
 
 # Plot complexity differences
 plot_worst_case_differences(q_min=0, q_max=1000)
